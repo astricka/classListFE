@@ -5,6 +5,7 @@ import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import { Toaster } from 'react-hot-toast';
 import Navbar from './components/Navbar/Navbar';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -18,13 +19,14 @@ function App() {
         <Route path='/register'>
           <RegisterPage />
         </Route>
-        <Route exact path='/home'>
+        <Route exact path='/'>
           <HomePage />
         </Route>
         <Route path='*'>
           <h2>Page does not exist</h2>
         </Route>
       </Switch>
+        <Footer />
     </div>
   );
 }
