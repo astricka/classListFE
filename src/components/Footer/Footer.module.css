@@ -1,11 +1,97 @@
 .footerContainer {
     display: flex;
-    justify-content: center;
     margin: 0 auto;
-    max-width: 1280px;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #111;
+    color: white;
 }
 
-.footerContainer footer {
+.mainFooter {
     display: flex;
-    gap: 5rem;
+    justify-content: space-evenly;
+    gap: 2rem;
+}
+
+.mainFooter div {
+    width: 25%;
+}
+
+/* first section */
+
+.mainFooter p {
+    text-align: justify-all;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+.mainFooter img {
+    margin-bottom: 40px;
+}
+
+.iconsList {
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.iconsList a {
+    background-color: rgba(255,255,255,.19);
+    display: block;
+    font-size: 16px;
+    line-height: 40px;
+    text-align: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 5px;
+    color: #ccc;
+}
+
+.iconsList a:hover {
+    background-color: #fcaf01;
+    transition: ease-in 0.4s;
+}
+
+.iconsList a:visited {
+    text-decoration: none;
+}
+
+.iconsList i {
+    font-size: 16px;
+}
+
+/* second section */
+
+h3 {
+    font-size: 22px;
+}
+
+.borderBottom {
+    margin-top: 20px;
+    width: 20px;
+    border-bottom: 3px solid #1aa78e;
+}
+
+.secondSection ul {
+    margin-top: 30px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.secondSection a {
+    text-decoration: none;
+    color: #ccc;
+    font-size: 16px;
+}
+
+.secondSection a:hover {
+    transition: ease-in 0.4s;
+    color: #1aa78e;
+}
+
+.contactInfoContainer i {
+    color: #fcaf01;
+    margin-right: 15px;
 }

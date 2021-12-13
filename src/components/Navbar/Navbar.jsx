@@ -1,5 +1,4 @@
 import css from './Navbar.module.css';
-import NavigationLinkUI from '../UI/NavigationLinkUI';
 import { NavLink } from 'react-router-dom';
 
 const linksArr = [
