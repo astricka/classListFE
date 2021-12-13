@@ -1,0 +1,29 @@
+.isActive {
+    color: #1aa78e;
+}
+
+.navContainer {
+    margin: 0 auto;
+    max-width: 1240px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    background-color: white;
+}
+
+.linksContainer {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1rem;
+}
+
+.linksContainer a {
+    text-decoration: none;
+    color: black;
+}
+
+.linksContainer a:hover {
+    color: #1aa78e;
+    transition: ease-in 0.3s;
+}
