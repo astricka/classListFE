@@ -1,0 +1,15 @@
+.registerForm {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.registerFormContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.errorMsg {
+    color: tomato;
+    text-transform: uppercase;
+}

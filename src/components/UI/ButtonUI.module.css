@@ -1,0 +1,14 @@
+.buttonUI {
+    background-color: #1aa78e;
+    padding: 1rem;
+    width: 30%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buttonUI:hover {
+    background-color: #fcaf01;
+    color: #1aa78e;
+    transition: ease-in 0.2s;
+}

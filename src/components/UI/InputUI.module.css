@@ -1,0 +1,24 @@
+.input {
+    width: 100%;
+    padding: 19px;
+    color: #333;
+    border: 1px solid #bbbbbb;
+    display: block;
+    border-radius: 5px;
+}
+.input.error-field {
+    border-color: tomato;
+}
+
+.error-message {
+    color: tomato;
+}
+
+.input-group {
+    margin-bottom: 1rem;
+}
+
+.labelUI {
+    color: #1aa78e;
+    text-transform: uppercase;
+}

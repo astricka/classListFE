@@ -1,13 +1,16 @@
-function InputUI({ name, type, placeholder }) {
+import css from './InputUI.module.css';
+
+function InputUI({ error, name, ...rest }) {
     return(
-        <>
-            <label htmlFor={name}>{name}</label>
+        <div>
+            <label className={css.labelUI} htmlFor={name}>{name}</label>
             <input
+                className={css.input + ' ' + (error ? css['error-field'] : '')}
                 name={name}
-                type={type}
-                placeholder={placeholder}
+                {...rest}
             />
-        </>
+            {error && <span className={css['error-message']}>{error}</span>}
+        </div>
     );
 }
 

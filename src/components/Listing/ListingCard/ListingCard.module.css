@@ -1,0 +1,19 @@
+.cardContainer {
+    width: 20%;
+    background-color: white;
+    padding: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.cardContainer img {
+    max-width: 100%;
+}
+
+.cardContainer i {
+    margin-right: 5px;
+    color: #1aa78e;
+}
+
+.cardContainer h5 {
+    color: #333333;
+}

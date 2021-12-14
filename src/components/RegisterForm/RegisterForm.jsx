@@ -1,43 +1,32 @@
 import InputUI from '../UI/InputUI';
-import css from './LoginForm.module.css';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import ButtonUI from '../UI/ButtonUI';
+import { useHistory } from 'react-router-dom';
+import css from './RegisterForm.module.css';
 
-function LoginForm() {
-    // const formik = useFormik({
-    //     initialValues: {
-    //         title: '',
-    //         mainImage: '',
-    //     },
-    //     onSubmit: (values) => {
-    //         const formData = new FormData();
-    //         formData.append('title', values.title);
-    //         formData.append('mainImage', values.mainImage);
-    //         console.log(formData);
-    //
-    //         fetch('http://localhost:7000/api/new-listing', {
-    //             method: 'POST',
-    //             body: formData,
-    //         })
-    //             .then((resp) => resp.text())
-    //             .then((data) => console.log(data))
-    //     }
-    // })
+function RegisterForm() {
+    const history = useHistory();
+
     const formik = useFormik({
         initialValues: {
             email: '',
             password: '',
+            repeatPassword: '',
         },
         validationSchema: Yup.object({
             email: Yup.string()
                 .min(4, 'minimum 4 characters')
                 .max(55, 'maximum 55 characters')
-                .required(),
+                .required('required'),
             password: Yup.string()
                 .min(4, 'minimum 4 characters')
                 .max(55, 'maximum 55 characters')
-                .required(),
+                .required('required'),
+            repeatPassword: Yup.string()
+                .min(4, 'minimum 4 characters')
+                .oneOf([Yup.ref('password'), ''], 'Password should match')
+                .required('required'),
         }),
         onSubmit: (values) => {
             handleSubmit(values.email, values.password);
@@ -45,7 +34,7 @@ function LoginForm() {
     });
 
     const handleSubmit = async (email, password) => {
-        const resp = await fetch('http://localhost:7000/api/auth/login', {
+        const resp = await fetch('http://localhost:7000/api/auth/register', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
@@ -56,16 +45,16 @@ function LoginForm() {
             }),
         });
         const data = await resp.json();
-        console.log(data);
-    }
+        if (data.msg === 'success') {
 
+        }
+    }
     return(
-        <section className={css.loginContainer}>
-            <h1>Please login</h1>
-            <form onSubmit={formik.handleSubmit} className={css.loginForm}>
+        <section className={css.registerFormContainer}>
+            <form className={css.registerForm} onSubmit={formik.handleSubmit}>
                 <InputUI
                     name='email'
-                    type='password'
+                    type='text'
                     value={formik.values.email}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -79,10 +68,18 @@ function LoginForm() {
                     onBlur={formik.handleBlur}
                 />
                 {formik.touched.password && formik.errors.password && <span className={css.errorMsg}>{formik.errors.password}</span>}
-                <ButtonUI type={'submit'}>Login</ButtonUI>
+                <InputUI
+                    name='repeatPassword'
+                    type='password'
+                    value={formik.values.repeatPassword}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                />
+                {formik.touched.repeatPassword && formik.errors.repeatPassword && <span className={css.errorMsg}>{formik.errors.repeatPassword}</span>}
+                <ButtonUI type={'submit'}>Register</ButtonUI>
             </form>
         </section>
     );
 }
 
-export default LoginForm;
+export default RegisterForm;
