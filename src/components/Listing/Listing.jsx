@@ -1,20 +1,24 @@
 import ListingCard from './ListingCard/ListingCard';
 import css from './Listing.module.css';
-
-const myArr = [
-    {id: 1, title: 'very cool', imgUrl: 'https://g2.dcdn.lt/images/pix/vytautas-sustauskas-62270925.jpg', price: 420},
-    {id: 1, title: 'very cool', imgUrl: 'https://g2.dcdn.lt/images/pix/vytautas-sustauskas-62270925.jpg', price: 420},
-    {id: 1, title: 'very cool', imgUrl: 'https://g2.dcdn.lt/images/pix/vytautas-sustauskas-62270925.jpg', price: 420},
-    {id: 1, title: 'very cool', imgUrl: 'https://g2.dcdn.lt/images/pix/vytautas-sustauskas-62270925.jpg', price: 420},
-    {id: 1, title: 'very cool', imgUrl: 'https://g2.dcdn.lt/images/pix/vytautas-sustauskas-62270925.jpg', price: 420},
-    {id: 1, title: 'very cool', imgUrl: 'https://g2.dcdn.lt/images/pix/vytautas-sustauskas-62270925.jpg', price: 420},
-];
+import { useEffect, useState } from 'react';
 
 function Listing() {
+    const [listingArr, setListingArr] = useState([]);
+    useEffect(() => {
+        fetchedData();
+    }, []);
+
+    const fetchedData = async () => {
+        const resp = await fetch('http://localhost:7000/api/listings');
+        const data = await resp.json();
+        setListingArr(data.data);
+        console.log(data.data);
+    }
+
     return(
         <section className={css.listingContainer}>
-            {myArr.map((item) => (
-               <ListingCard key={item.id} title={item.title} price={item.price} imgUrl={item.imgUrl} />
+            {listingArr.map((item) => (
+               <ListingCard key={item.id} title={item.title} price={item.price} imgUrl={item.image} />
             ))}
         </section>
     );

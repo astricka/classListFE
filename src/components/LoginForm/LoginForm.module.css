@@ -21,10 +21,6 @@
     padding: 1rem;
 }
 
-.loginForm label {
-    color: black;
-}
-
 .errorMsg {
     color: tomato;
     text-transform: uppercase;

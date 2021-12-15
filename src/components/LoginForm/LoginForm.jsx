@@ -3,8 +3,12 @@ import css from './LoginForm.module.css';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import ButtonUI from '../UI/ButtonUI';
+import { useAuthContext } from '../../store/AuthContext';
+import { useHistory } from 'react-router-dom';
 
 function LoginForm() {
+    const { login } = useAuthContext();
+    const history = useHistory();
     // const formik = useFormik({
     //     initialValues: {
     //         title: '',
@@ -26,8 +30,8 @@ function LoginForm() {
     // })
     const formik = useFormik({
         initialValues: {
-            email: '',
-            password: '',
+            email: 'a@b.com',
+            password: '123456',
         },
         validationSchema: Yup.object({
             email: Yup.string()
@@ -56,7 +60,11 @@ function LoginForm() {
             }),
         });
         const data = await resp.json();
-        console.log(data);
+        const { token, email: loggedEmail } = data.loggedInUser;
+
+        if (login(token, loggedEmail)) {
+            history.replace('/myAccount');
+        }
     }
 
     return(
@@ -65,7 +73,7 @@ function LoginForm() {
             <form onSubmit={formik.handleSubmit} className={css.loginForm}>
                 <InputUI
                     name='email'
-                    type='password'
+                    type='text'
                     value={formik.values.email}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}

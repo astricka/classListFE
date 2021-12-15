@@ -46,7 +46,7 @@ function RegisterForm() {
         });
         const data = await resp.json();
         if (data.msg === 'success') {
-
+            history.replace('/login');
         }
     }
     return(
